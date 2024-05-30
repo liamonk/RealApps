@@ -1,5 +1,6 @@
 import { Link, useHistory } from "react-router-dom"
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 export const Header = () => {
   const history = useHistory()
@@ -15,26 +16,24 @@ export const Header = () => {
             >
                 <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="home">
-                    <NavItem eventKey="home">
+                    <NavItem eventKey="PiAndSeek">
                         <NavIcon>
-                            <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-pie-chart" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
                         <NavText>
-                            Home
+                            PiAndSeek
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="devices">
+                    <NavItem eventKey="countdown">
                         <NavIcon>
-                            <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
+                            <i className="fa fa-hourglass" style={{ fontSize: '1.75em' }} />
                         </NavIcon>
                         <NavText>
-                            Devices
+                            Countdown
                         </NavText>
                     </NavItem>
                 </SideNav.Nav>
             </SideNav>
-    <Link to="/countdown">Countdown</Link>
-    <Link to="/piandseek">PiAndSeek</Link>
       <h1>RealApps</h1>
     </>
   );
