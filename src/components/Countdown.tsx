@@ -1,7 +1,15 @@
+import {Game} from "./countdown/Game";
+import {Header} from "./countdown/Header";
+import {Footer} from "./countdown/Footer";
 
-
-export const Countdown =()=>{
-    return(
-        <h1>Count d o w n</h1>
-    )
+export const Countdown =()=> {
+  return (
+    <>
+      <Header />
+      <Game />
+      <Footer />
+    </>
+  );
 }
+
+
