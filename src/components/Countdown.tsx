@@ -1,11 +1,11 @@
 import {Game} from "./countdown/Game";
-import {Header} from "./countdown/Header";
+import {CountdownHeader} from "./countdown/CountdownHeader";
 import {Footer} from "./countdown/Footer";
 
 export const Countdown =()=> {
   return (
     <>
-      <Header />
+      <CountdownHeader />
       <Game />
       <Footer />
     </>

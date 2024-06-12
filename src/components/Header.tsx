@@ -42,11 +42,11 @@ const StyledImage = styled.img`
 export const Header =()=> {
   return (
     <StyledHeaderMain>
-      <h1>Real Apps</h1>
+      <h1>Pi & Seek!</h1>
       <StyledNavArea>
         
           <StyledNavButton><Link to="/countdown"><p>Countdown</p></Link></StyledNavButton>
-          <StyledNavButton><Link to="/piandseek"><p>PiAndSeek</p></Link></StyledNavButton>
+          <StyledNavButton><Link to="/question-generator"><p>Question Generator</p></Link></StyledNavButton>
         
         </StyledNavArea>  
       <StyledImage src={logo} />      

@@ -12,7 +12,7 @@ const StyledHeader = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Header = () => {
+export const CountdownHeader = () => {
   return (
     <StyledHeader>
       <h1>Countdown!</h1>

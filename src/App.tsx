@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Countdown } from "./components/Countdown";
-import { PiAndSeek } from "./components/PiAndSeek";
+import { QuestionGenerator } from "./components/QuestionGenerator";
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Switch>
         
         <Route path="/countdown" component={Countdown}/>
-        <Route path="/piandseek" component={PiAndSeek}/>
+        <Route path="/question-generator" component={QuestionGenerator}/>
         <Redirect to="/countdown"/>
       </Switch>
     </>
