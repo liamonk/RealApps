@@ -149,8 +149,8 @@ export const Game = () => {
         <ToggleContainer>
           <p style={{ paddingRight: "20px" }}>Target Digits: </p>
           <p style={{ paddingRight: "5px" }}>2</p>
-          <Toggle onClick={handleTargetToggle} >
-            <Slider ></Slider>
+          <Toggle onClick={handleTargetToggle}>
+            <Slider></Slider>
           </Toggle>
           <p style={{ paddingLeft: "5px" }}>3</p>
         </ToggleContainer>
