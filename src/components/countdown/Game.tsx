@@ -4,7 +4,11 @@ import styled from "styled-components";
 import {Button} from "./Button";
 import CountdownTimer from "./CountdownTimer";
 
-
+interface ToggleProps{
+  o?:{
+    isActive: boolean
+  }
+}
 
 const StyledGameArea = styled.div`
   display: flex;
@@ -28,8 +32,8 @@ const StyledCardArea = styled.div`
   overflow: auto;
 `;
 
-const Toggle = styled.button`
-  background-color: ${(props) => (props.isActive ? "lightPink" : "lightBlue")};
+const Toggle = styled.button<ToggleProps>`
+  background-color: ${(props) => (props.o?.isActive ? "lightPink" : "lightBlue")};
   color: #fff;
   border: none;
   border-radius: 20px;
@@ -42,14 +46,14 @@ const Toggle = styled.button`
   margin-bottom: auto;
 `;
 
-const Slider = styled.span`
+const Slider = styled.span<ToggleProps>`
   position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: #fff;
   top: 50%;
-  left: ${(props) => (props.isActive ? "75%" : "25%")};
+  left: ${(props) => (props.o?.isActive ? "75%" : "25%")};
   transform: translate(-50%, -50%);
   transition: left 0.3s;
 `;
@@ -66,16 +70,16 @@ const ToggleContainer = styled.div`
 `;
 
 export const Game = () => {
-  const [cardDigits, updateCardDigits] = React.useState([]);
+  const [cardDigits, updateCardDigits] = React.useState([0]);
   const [target, updateTarget] = React.useState(0);
   const [threeDigitTarget, updateThreeDigitTarget] = React.useState(false);
-  const cardElements = cardDigits.map((card) => {
+  const cardElements = cardDigits.map((card : any) => {
     return <Card key={card.id} value={card} />;
   });
 
   const newOneDigitNumber = () => {
     const newDigit = Math.floor(Math.random() * 9 + 1);
-    const newDigits = [...cardDigits, newDigit];
+    const newDigits : number[] = [...cardDigits, newDigit];
     updateCardDigits(newDigits);
   };
 
@@ -145,8 +149,8 @@ export const Game = () => {
         <ToggleContainer>
           <p style={{ paddingRight: "20px" }}>Target Digits: </p>
           <p style={{ paddingRight: "5px" }}>2</p>
-          <Toggle onClick={handleTargetToggle} isActive={threeDigitTarget}>
-            <Slider isActive={threeDigitTarget}></Slider>
+          <Toggle onClick={handleTargetToggle} >
+            <Slider ></Slider>
           </Toggle>
           <p style={{ paddingLeft: "5px" }}>3</p>
         </ToggleContainer>

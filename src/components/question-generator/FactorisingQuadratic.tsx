@@ -6,7 +6,7 @@ import { StyledSettingsButton } from "./CardStyles";
 import {StyledSettingsContainer} from "./CardStyles";
 import { MathHelper } from "../../mathHelper";
 
-export default function FactoriseQuadratic(props) {
+export default function FactoriseQuadratic(props : any) {
   const [questionCoefficents, setQuestionCoefficents] = React.useState([
     1, 2, 1,
   ]);
