@@ -4,10 +4,12 @@ import styled from "styled-components";
 import {Button} from "./Button";
 import CountdownTimer from "./CountdownTimer";
 
+/*
 interface CardData{
   id: string;
   value: number;
 }
+  */
 
 interface ToggleProps {
   onClick: () => void;
