@@ -1,6 +1,6 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy to GitHub Pages
-env: 
+env:
   VITE_BASE_NAME: "/RealApps"
 
 on:
@@ -47,12 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: "./dist" 
-      - name: Upload 404
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # Upload dist repository
-          path: "./404.html"
+          path: "./"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
