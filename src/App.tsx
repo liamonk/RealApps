@@ -12,7 +12,7 @@ function App() {
         
         <Route path="/countdown" component={Countdown}/>
         <Route path="/question-generator" component={QuestionGenerator}/>
-        <Redirect to="/countdown"/>
+        <Redirect to="countdown"/>
       </Switch>
     </>
   );
