@@ -2,7 +2,6 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-NAVBAR - https://github.com/trendmicro-frontend/react-sidenav?tab=readme-ov-file
 
 Currently, two official plugins are available:
 
