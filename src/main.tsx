@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router basename="/RealApps">
+    <Router basename={process.env.BASE_NAME ?? '/'}>
       <App />
     </Router>
   </React.StrictMode>
