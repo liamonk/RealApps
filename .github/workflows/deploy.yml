@@ -47,7 +47,12 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: "./dist"
+          path: "./dist" 
+      - name: Upload 404
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload dist repository
+          path: "./404.html"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
