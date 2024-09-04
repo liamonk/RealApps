@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router basename={process.env.VITE_BASE_NAME ?? '/'}>
+    <Router basename={import.meta.env.VITE_BASE_NAME ?? '/'}>
       <App />
     </Router>
   </React.StrictMode>
