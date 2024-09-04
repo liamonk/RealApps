@@ -1,7 +1,7 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy to GitHub Pages
 env: 
-  VITE_BASE_NAME: REAL_APPS
+  VITE_BASE_NAME: "/RealApps"
 
 on:
   # Runs on pushes targeting the default branch
