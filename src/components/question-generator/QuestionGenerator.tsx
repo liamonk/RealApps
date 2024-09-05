@@ -1,5 +1,5 @@
 import React from "react";
-import FactoriseQuadratic from "./question-generator/FactorisingQuadratic"
+import FactoriseQuadratic from "./FactorisingQuadratic"
 
 
 export const QuestionGenerator =()=>{
