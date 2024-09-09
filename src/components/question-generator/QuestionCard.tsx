@@ -10,11 +10,12 @@ export const QuestionCard=(props : any)=> {
   const [questionCoefficents, setQuestionCoefficents] = React.useState([
     1, 2, 1,
   ]);
+  const [questionForUI, updateQuestionForUI] = React.useState('Click New Question to start')
   const [userAnswer, setUserAnswer] = React.useState("(? x + ?)(? x + ?)");
   const [correct, setCorrect] = React.useState(false);
   const [incorrect, setIncorrect] = React.useState(false);
   const [questionCompleted, setQuestionCompleted] = React.useState(false);
-  const [correctAnswer, setCorrectAnswer] = React.useState(["(x+1)(x+1)", ""]);
+  const [correctAnswers, setCorrectAnswer] = React.useState(["(x+1)(x+1)", ""]);
   const [settings, setSettings] = React.useState({
     aGreaterOne: false,
     negativeCoefficents: false,
@@ -28,7 +29,7 @@ export const QuestionCard=(props : any)=> {
 
 
 
-
+  /*this function sets the new question and generates the correct answer*/
   function newQuestion() {
     /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
     let d = Math.abs(MathHelper.coefficentGenerator(settings.aGreaterOne ? 5 : 1));
@@ -52,6 +53,10 @@ export const QuestionCard=(props : any)=> {
     if (secondBracketHCF != 1) {
       i = secondBracketHCF;
     }
+
+    
+
+    /* this part generates the correct answers based on the question */
     let solution1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${e / h})(${
       f / i
     }x+${g / i})`
@@ -70,18 +75,47 @@ export const QuestionCard=(props : any)=> {
     setIncorrect(false);
     setUserAnswer("( x + )( x + )");
     setQuestionCompleted(false);
-  }
+
+    /* generate question for UI */
+
+    /*
+    const generateQuestionForUI = ()=>{
+      let question =
+       `${questionCoefficents[0] != 1 ? questionCoefficents[0] : ""}x`}
+      <sup>2</sup>
+      {`${questionCoefficents[1] >= 0 ? "+" : "-"} ${
+        questionCoefficents[1] != 1 ? questionCoefficents[1] : ""
+      }x ${questionCoefficents[2] >= 0 ? "+" : "-"} ${questionCoefficents[2]}`
+      return question
+    }
+      */
+
+    const generateQuestionForUI = () => {
+      let question = `${questionCoefficents[0] !== 1 ? questionCoefficents[0] : ""}x`;
+      question += `^2`;
+      question += `${questionCoefficents[1] >= 0 ? "+" : "-"} ${
+        questionCoefficents[1] !== 1 ? questionCoefficents[1] : ""
+      }x `;
+      question += `${questionCoefficents[2] >= 0 ? "+" : "-"} ${questionCoefficents[2]}`;
+      return question;
+    };
+
+
+      updateQuestionForUI(generateQuestionForUI)
+    
+} 
 
   const checkAnswer = () => {
     setUserAnswer((prevAnswer) => {
+      /*regex to format user answer to allow for comparison to correct answer*/
       let modifiedAnswer = prevAnswer
         .replace(/ /g, "")
         .replace(/\+\-/g, "-")
         .replace(/\b1x\b/g, "x");
       
-      for (let i=0; i< correctAnswer.length;i++ ){
+      for (let i=0; i< correctAnswers.length;i++ ){
         if (
-        modifiedAnswer == correctAnswer[i] 
+        modifiedAnswer == correctAnswers[i] 
       ) {
         setCorrect(true);
         setIncorrect(false);
@@ -95,7 +129,7 @@ export const QuestionCard=(props : any)=> {
 
       return modifiedAnswer;
     });
-    console.log("correctAnswer " + correctAnswer[0] + "=" + correctAnswer[1]);
+    console.log("correctAnswers" + correctAnswers);
   };
 
   function handleAnswerChange(event : any) {
@@ -132,19 +166,8 @@ export const QuestionCard=(props : any)=> {
     }));
   };
 
-  let firstSign = "";
-  if (questionCoefficents[1] >= 0) {
-    firstSign = "+";
-  } else {
-    firstSign = "";
-  }
 
-  let secondSign = "";
-  if (questionCoefficents[2] >= 0) {
-    secondSign = "+";
-  } else {
-    secondSign = "";
-  }
+
   return (
     <StyledView>
       <StyledSettingsButton onClick={showSettings}>
@@ -173,11 +196,7 @@ export const QuestionCard=(props : any)=> {
       <h3>Test</h3>
 
       <span>
-        {`${questionCoefficents[0] != 1 ? questionCoefficents[0] : ""}x`}
-        <sup>2</sup>
-        {`${firstSign} ${
-          questionCoefficents[1] != 1 ? questionCoefficents[1] : ""
-        }x ${secondSign} ${questionCoefficents[2]}`}
+        {questionForUI}
       </span>
 
       <StyledTextArea
