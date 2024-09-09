@@ -99,10 +99,7 @@ export const QuestionCard=(props : any)=> {
       question += `${questionCoefficents[2] >= 0 ? "+" : "-"} ${questionCoefficents[2]}`;
       return question;
     };
-
-
       updateQuestionForUI(generateQuestionForUI)
-    
 } 
 
   const checkAnswer = () => {
@@ -112,7 +109,7 @@ export const QuestionCard=(props : any)=> {
         .replace(/ /g, "")
         .replace(/\+\-/g, "-")
         .replace(/\b1x\b/g, "x");
-      
+      /* part bewteen these comments is question specific, rest is generic */
       for (let i=0; i< correctAnswers.length;i++ ){
         if (
         modifiedAnswer == correctAnswers[i] 
@@ -143,7 +140,9 @@ export const QuestionCard=(props : any)=> {
     }));
   }
 
-  /*  
+  /* this is a failed attempt to generalise the setting changes  
+
+
   const handleSettingsChange = (settingToChange) => {
     setSettings((prevSettings) => ({
       ...prevSettings,
