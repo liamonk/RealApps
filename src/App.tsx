@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Countdown } from "./components/countdown/Countdown";
 import { QuestionGenerator } from "./components/question-generator/QuestionGenerator";
 import { Home } from "./components/Home";
+import { RandomGroups } from "./components/random-groups/RandomGroups";
 
 
 function App() {
@@ -11,9 +12,10 @@ function App() {
       <Header />
       <Switch>
         <Route path="/home" component={Home}/>
+        <Route path="/random-groups" component={RandomGroups}/>
         <Route path="/countdown" component={Countdown}/>
         <Route path="/question-generator" component={QuestionGenerator}/>
-        <Redirect to="countdown"/>
+        <Redirect to="home"/>
       </Switch>
     </>
   );

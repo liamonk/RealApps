@@ -46,6 +46,7 @@ export const Header =()=> {
       <StyledNavArea>
         
           <StyledNavButton><Link to="home"><p>Home</p></Link></StyledNavButton>
+          <StyledNavButton><Link to="random-groups"><p>Random Groups</p></Link></StyledNavButton>
           <StyledNavButton><Link to="countdown"><p>Countdown</p></Link></StyledNavButton>
           <StyledNavButton><Link to="question-generator"><p>Question Generator</p></Link></StyledNavButton>
         
