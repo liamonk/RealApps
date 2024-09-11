@@ -14,6 +14,8 @@ const StyledHeaderMain = styled.div`
 const StyledNavButton = styled.li`
 display: block;
 margin-left: 50px;
+font-size: 20px;
+font-weight: 600;
 a {
     text-decoration: none;
     color: black;
