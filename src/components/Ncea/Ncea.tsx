@@ -12,25 +12,40 @@ export const Ncea = () => {
             width: "30%",
           }}
         >
-          <h2>NCEA resources</h2>
-          <h2>Level 1 mathematics:</h2>
-          <h3>
+          <h2>NCEA exams and mark schemes</h2>
+          <h3>Level 1 mathematics:</h3>
+          <h4>
             <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=exams&level=01&_gl=1*1z0diwx*_ga*OTg3OTMzMTc0LjE3MjMwMDI5Nzc.*_ga_TFQQ681L2E*MTcyNjA5OTY3OC4zMS4xLjE3MjYwOTk3MzUuMC4wLjA.">
               External exams
             </a>
-          </h3>
-          <h2>Level 2 mathematics:</h2>
-          <h3>
+          </h4>
+          <h4>
+            <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=reports&level=01">
+              Mark schemes
+            </a>
+          </h4>
+          <h3>Level 2 mathematics:</h3>
+          <h4>
             <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=exams&level=02">
               External exams
             </a>
-          </h3>
-          <h2>Level 3 mathematics:</h2>
-          <h3>
+          </h4>
+          <h4>
+            <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=reports&level=02">
+              Mark schemes
+            </a>
+          </h4>
+          <h3>Level 3 mathematics:</h3>
+          <h4>
             <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=exams&level=03">
               External exams
             </a>
-          </h3>
+          </h4>
+          <h4>
+            <a href="https://www.nzqa.govt.nz/ncea/assessment/search.do?query=math&view=reports&level=03">
+              Mark schemes
+            </a>
+          </h4>
         </div>
         <div
           style={{
@@ -57,8 +72,8 @@ export const Ncea = () => {
             Graphing website for NCEA internals
           </h3>
           <h3>
-            <a href="https://nzamtnews.blogspot.com/">NZAMT news</a> - to help
-            stay up to date with Mathematics Education
+            <a href="https://nzamtnews.blogspot.com/">NZAMT news</a> - Stay up
+            to date with Mathematics Education
           </h3>
           <h3>
             <a href="https://nrich.maths.org/">NRich</a> - For rich mathematical
