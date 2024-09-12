@@ -1,8 +1,8 @@
-import {Game} from "./Game";
-import {CountdownHeader} from "./CountdownHeader";
-import {Footer} from "./Footer";
+import { Game } from "./Game";
+import { CountdownHeader } from "./CountdownHeader";
+import { Footer } from "./Footer";
 
-export const Countdown =()=> {
+export const Countdown = () => {
   return (
     <>
       <CountdownHeader />
@@ -10,6 +10,4 @@ export const Countdown =()=> {
       <Footer />
     </>
   );
-}
-
-
+};

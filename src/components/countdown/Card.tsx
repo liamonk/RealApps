@@ -10,6 +10,6 @@ const StyledCard = styled.div`
   border-radius: 5px;
 `;
 
-export const Card=(props : any)=> {
-   return <StyledCard>{props.value}</StyledCard>;
-}
+export const Card = (props: any) => {
+  return <StyledCard>{props.value}</StyledCard>;
+};

@@ -8,13 +8,14 @@ import { StyledView } from "./CardStyles";
 import { StyledButton } from "./CardStyles";
 import { StyledTextArea } from "./CardStyles";
 import { StyledSettingsButton } from "./CardStyles";
-import {StyledSettingsContainer} from "./CardStyles";
+import { StyledSettingsContainer } from "./CardStyles";
 
-
-export const QuestionCardRF=(props : any)=> {
-  const [question, updateQuestion] = React.useState(props.defaultQuestion)
+export const QuestionCardRF = (props: any) => {
+  const [question, updateQuestion] = React.useState(props.defaultQuestion);
   const [userAnswer, setUserAnswer] = React.useState(props.defaultUserAnswer);
-  const [correctAnswers, setCorrectAnswer] = React.useState(props.defaultCorrectAnswer);
+  const [correctAnswers, setCorrectAnswer] = React.useState(
+    props.defaultCorrectAnswer
+  );
   const [correct, setCorrect] = React.useState(false);
   const [incorrect, setIncorrect] = React.useState(false);
   const [questionCompleted, setQuestionCompleted] = React.useState(false);
@@ -28,51 +29,47 @@ export const QuestionCardRF=(props : any)=> {
     props.onUpdateCount(updatedCount);
   };
 
-
-
-
   /*this function sets the new question and generates the correct answer then generates the question to display in the UI*/
   function newQuestion() {
-    const questionFunctionOutput = props.newQuestion()
-    setUserAnswer(questionFunctionOutput[0])
-    setCorrectAnswer(questionFunctionOutput[1])
-    updateQuestion(questionFunctionOutput[2])
+    const questionFunctionOutput = props.newQuestion();
+    setUserAnswer(questionFunctionOutput[0]);
+    setCorrectAnswer(questionFunctionOutput[1]);
+    updateQuestion(questionFunctionOutput[2]);
     setCorrect(false);
     setIncorrect(false);
     setUserAnswer(props.defaultUserAnswer);
     setQuestionCompleted(false);
-    console.log(questionFunctionOutput)
-    ;
-}
+    console.log(questionFunctionOutput);
+  }
 
   const checkAnswer = () => {
-    setUserAnswer((prevAnswer : string) => {
+    setUserAnswer((prevAnswer: string) => {
       /*regex to format user answer to allow for comparison to correct answer*/
       let modifiedAnswer = prevAnswer
         .replace(/ /g, "")
         .replace(/\+\-/g, "-")
         .replace(/\b1x\b/g, "x");
       /* part bewteen these comments is question specific, rest is generic */
-      for (let i=0; i< correctAnswers.length;i++ ){
-        if (
-        modifiedAnswer == correctAnswers[i] 
-      ) {
-        setCorrect(true);
-        setIncorrect(false);
-        setQuestionCompleted(true);
-        questionCompleted ? {} : updateCount();
-        {break}
-      } else {
-        setIncorrect(true);
-        setCorrect(false);
-      }}
-      console.log("correctAnswers" + correctAnswers + "Question" + question)
+      for (let i = 0; i < correctAnswers.length; i++) {
+        if (modifiedAnswer == correctAnswers[i]) {
+          setCorrect(true);
+          setIncorrect(false);
+          setQuestionCompleted(true);
+          questionCompleted ? {} : updateCount();
+          {
+            break;
+          }
+        } else {
+          setIncorrect(true);
+          setCorrect(false);
+        }
+      }
+      console.log("correctAnswers" + correctAnswers + "Question" + question);
       return modifiedAnswer;
     });
-    
   };
 
-  function handleAnswerChange(event : any) {
+  function handleAnswerChange(event: any) {
     setUserAnswer(event.target.value);
   }
 
@@ -82,7 +79,6 @@ export const QuestionCardRF=(props : any)=> {
       showSettings: !prevSettings.showSettings,
     }));
   }
-
 
   /*This needs attention */
   const handleANegativeSettingsChange = () => {
@@ -98,8 +94,6 @@ export const QuestionCardRF=(props : any)=> {
       negativeCoefficents: !prevSettings.negativeCoefficents,
     }));
   };
-
-
 
   return (
     <StyledView>
@@ -128,9 +122,7 @@ export const QuestionCardRF=(props : any)=> {
       </span>
       <h3>{props.title}</h3>
 
-      <span>
-        {question}
-      </span>
+      <span>{question}</span>
 
       <StyledTextArea
         value={userAnswer}
@@ -146,4 +138,4 @@ export const QuestionCardRF=(props : any)=> {
       </span>
     </StyledView>
   );
-}
+};

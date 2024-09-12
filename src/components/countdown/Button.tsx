@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-
-export const  Button=(props : any)=> {
+export const Button = (props: any) => {
   const StyledButton = styled.button`
     font-size: 30px;
     max-height: 50px;
@@ -13,4 +12,4 @@ export const  Button=(props : any)=> {
   `;
 
   return <StyledButton onClick={props.handleClick}>{props.text}</StyledButton>;
-}
+};

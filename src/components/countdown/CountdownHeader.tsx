@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.div`
- 
   align-items: center;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
-  
+
   padding-left: 25px;
   padding-right: 25px;
   margin-bottom: 10px;

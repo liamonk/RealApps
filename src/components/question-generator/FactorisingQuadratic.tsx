@@ -3,10 +3,10 @@ import { StyledView } from "./CardStyles";
 import { StyledButton } from "./CardStyles";
 import { StyledTextArea } from "./CardStyles";
 import { StyledSettingsButton } from "./CardStyles";
-import {StyledSettingsContainer} from "./CardStyles";
+import { StyledSettingsContainer } from "./CardStyles";
 import { MathHelper } from "../../mathHelper";
 
-export default function FactoriseQuadratic(props : any) {
+export default function FactoriseQuadratic(props: any) {
   const [questionCoefficents, setQuestionCoefficents] = React.useState([
     1, 2, 1,
   ]);
@@ -25,17 +25,17 @@ export default function FactoriseQuadratic(props : any) {
     props.onUpdateCount(updatedCount);
   };
 
-
-
-
-
   function newQuestion() {
     /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
-    let d = Math.abs(MathHelper.coefficentGenerator(settings.aGreaterOne ? 5 : 1));
+    let d = Math.abs(
+      MathHelper.coefficentGenerator(settings.aGreaterOne ? 5 : 1)
+    );
     let e = settings.negativeCoefficents
       ? MathHelper.coefficentGenerator(6)
       : Math.abs(MathHelper.coefficentGenerator(6));
-    let f = Math.abs(MathHelper.coefficentGenerator(settings.aGreaterOne ? 2 : 1));
+    let f = Math.abs(
+      MathHelper.coefficentGenerator(settings.aGreaterOne ? 2 : 1)
+    );
     let g = settings.negativeCoefficents
       ? MathHelper.coefficentGenerator(6)
       : Math.abs(MathHelper.coefficentGenerator(6));
@@ -96,7 +96,7 @@ export default function FactoriseQuadratic(props : any) {
     console.log("correctAnswer " + correctAnswer[0] + "=" + correctAnswer[1]);
   };
 
-  function handleAnswerChange(event : any) {
+  function handleAnswerChange(event: any) {
     setUserAnswer(event.target.value);
   }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import {Button} from "./Button";
+import { Button } from "./Button";
 
 const CountdownContainer = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ function CountdownTimer() {
   const [time, setTime] = useState(120); // 2 minutes in seconds
 
   useEffect(() => {
-    let timer : any;
+    let timer: any;
     if (isRunning && time > 0) {
       timer = setInterval(() => {
         setTime((prevTime) => prevTime - 1);

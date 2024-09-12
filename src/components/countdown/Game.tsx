@@ -1,7 +1,7 @@
 import React from "react";
-import {Card} from "./Card";
+import { Card } from "./Card";
 import styled from "styled-components";
-import {Button} from "./Button";
+import { Button } from "./Button";
 import CountdownTimer from "./CountdownTimer";
 
 /*
@@ -84,13 +84,13 @@ export const Game = () => {
   const [cardDigits, updateCardDigits] = React.useState<number[]>([]);
   const [target, updateTarget] = React.useState(0);
   const [threeDigitTarget, updateThreeDigitTarget] = React.useState(false);
-  const cardElements = cardDigits.map((card : any) => {
+  const cardElements = cardDigits.map((card: any) => {
     return <Card key={card.id} value={card} />;
   });
 
   const newOneDigitNumber = () => {
     const newDigit = Math.floor(Math.random() * 9 + 1);
-    const newDigits : number[] = [...cardDigits, newDigit];
+    const newDigits: number[] = [...cardDigits, newDigit];
     updateCardDigits(newDigits);
   };
 
