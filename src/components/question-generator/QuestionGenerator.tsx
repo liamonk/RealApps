@@ -1,76 +1,82 @@
 import React from "react";
-import FactoriseQuadratic from "./FactorisingQuadratic";
 import { QuestionCardRF } from "./QuestionCardRF";
 import { MathHelper } from "../../mathHelper";
 
 export const QuestionGenerator = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(Number(localStorage.getItem('count')));
   const onUpdateCount = (newCount: number) => {
     setCount(newCount);
+    localStorage.setItem('count', String(newCount))
   };
   return (
     <>
       <div style={{ marginLeft: "10px" }}>Correct answers: {count}</div>
       <div style={{ display: "flex" }}>
-        <FactoriseQuadratic count={count} onUpdateCount={onUpdateCount} />
         <QuestionCardRF
-        title = "Factorise Quadratic"
-        count = {count}
-        onUpdateCount = {onUpdateCount}
-        defaultQuestion = {<span>x<sup>2</sup>+5x+6</span>}
-        defaultCorrectAnswer={["(x+2)(x+3)", "(x+3)(x+2)"]}
-        defaultUserAnswer = "(?x + ?)(?x + ?)"
-        newQuestion = {()=>{
-          /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
-          let d = Math.abs(
-            MathHelper.coefficentGenerator(5)
-          );
-          let e = MathHelper.coefficentGenerator(6);
-          let f = Math.abs(
-            MathHelper.coefficentGenerator(2)
-          );
-          let g =MathHelper.coefficentGenerator(6);
-          let a = d * f;
-          let b = d * g + e * f;
-          let c = e * g;
-          let h = 1;
-          let i = 1;
-          let firstBracketHCF = MathHelper.findHcf(d, e);
-          let secondBracketHCF = MathHelper.findHcf(f, g);
-          if (firstBracketHCF != 1) {
-            h = firstBracketHCF;
+          title="Factorise Quadratic"
+          count={count}
+          onUpdateCount={onUpdateCount}
+          defaultQuestion={
+            <span>
+              x<sup>2</sup>+5x+6
+            </span>
           }
-          if (secondBracketHCF != 1) {
-            i = secondBracketHCF;
-          }
-          let firstSign = "";
-          if (b >= 0) {
-            firstSign = "+";
-          } else {
-            firstSign = "";
-          }
-          let secondSign = "";
-          if (c >= 0) {
-            secondSign = "+";
-          } else {
-            secondSign = "";
-          }
-          let correctAnswer1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${e / h})(${
-            f / i
-          }x+${g / i})`
-            .replace(/\+\-/g, "-")
-            .replace(/1x/g, "x")
-            .replace(/ /g, "");
-          let correctAnswer2 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${g / i})(${
-            d / h
-          }x+${e / h})`
-            .replace(/\+\-/g, "-")
-            .replace(/1x/g, "x")
-            .replace(/ /g, "");
-            const newQuestion = (<span>{a}x<sup>2</sup> {firstSign} {b}x {secondSign} {c}</span>)
-            return ["Your answer here", [correctAnswer1, correctAnswer2], newQuestion]
-        }}
-        
+          defaultCorrectAnswer={["(x+2)(x+3)", "(x+3)(x+2)"]}
+          defaultUserAnswer="(?x + ?)(?x + ?)"
+          newQuestion={() => {
+            /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
+            let d = Math.abs(MathHelper.coefficentGenerator(5));
+            let e = MathHelper.coefficentGenerator(6);
+            let f = Math.abs(MathHelper.coefficentGenerator(2));
+            let g = MathHelper.coefficentGenerator(6);
+            let a = d * f;
+            let b = d * g + e * f;
+            let c = e * g;
+            let h = 1;
+            let i = 1;
+            let firstBracketHCF = MathHelper.findHcf(d, e);
+            let secondBracketHCF = MathHelper.findHcf(f, g);
+            if (firstBracketHCF != 1) {
+              h = firstBracketHCF;
+            }
+            if (secondBracketHCF != 1) {
+              i = secondBracketHCF;
+            }
+            let firstSign = "";
+            if (b >= 0) {
+              firstSign = "+";
+            } else {
+              firstSign = "";
+            }
+            let secondSign = "";
+            if (c >= 0) {
+              secondSign = "+";
+            } else {
+              secondSign = "";
+            }
+            let correctAnswer1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${
+              d / h
+            }x+${e / h})(${f / i}x+${g / i})`
+              .replace(/\+\-/g, "-")
+              .replace(/1x/g, "x")
+              .replace(/ /g, "");
+            let correctAnswer2 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${
+              f / i
+            }x+${g / i})(${d / h}x+${e / h})`
+              .replace(/\+\-/g, "-")
+              .replace(/1x/g, "x")
+              .replace(/ /g, "");
+            const newQuestion = (
+              <span>
+                {a}x<sup>2</sup> {firstSign} {b}x {secondSign} {c}
+              </span>
+            );
+            return [
+              "Your answer here",
+              [correctAnswer1, correctAnswer2],
+              newQuestion,
+            ];
+          }}
         />
         <QuestionCardRF
           title="Adding Integer"
@@ -97,7 +103,7 @@ export const QuestionGenerator = () => {
           defaultUserAnswer="?(?x+?)"
           newQuestion={() => {
             /*a(bx+c) dx+c */
-            const a = MathHelper.coefficentGenerator(6) + 1;
+            const a = Math.abs(MathHelper.coefficentGenerator(6) + 1);
             const b = MathHelper.coefficentGenerator(6);
             const c = MathHelper.coefficentGenerator(6);
             const d = a * b;
