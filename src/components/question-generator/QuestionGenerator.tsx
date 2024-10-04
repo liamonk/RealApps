@@ -72,7 +72,7 @@ export const QuestionGenerator = () => {
               </span>
             );
             return [
-              "Your answer here",
+              `... coefficent in first bracket is ${d}`,
               [correctAnswer1, correctAnswer2],
               newQuestion,
             ];
@@ -90,7 +90,7 @@ export const QuestionGenerator = () => {
             const b = MathHelper.coefficentGenerator(10);
             const newQuestion = `${a} + ${b}`;
             const correctAnswer = a + b;
-            return ["Your answer here", [correctAnswer], newQuestion];
+            return [`... You can do it!`, [correctAnswer], newQuestion];
           }}
         />
 
@@ -114,7 +114,7 @@ export const QuestionGenerator = () => {
               .replace(/\b1x\b/g, "x");
             const newQuestion = `${d}x ${e >= 0 ? "+" : ""} ${e}`;
             const correctAnswer = solution;
-            return ["Your answer here", [correctAnswer], newQuestion];
+            return [`... HCF is ${a}`, [correctAnswer], newQuestion];
           }}
         />
       </div>

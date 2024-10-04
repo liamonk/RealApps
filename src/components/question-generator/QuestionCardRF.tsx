@@ -18,6 +18,8 @@ export const QuestionCardRF = (props: any) => {
   );
   const [correct, setCorrect] = React.useState(false);
   const [incorrect, setIncorrect] = React.useState(false);
+  const [hint, setHint] = React.useState("");
+  const [showHint, setShowHint] = React.useState(false);
   const [questionCompleted, setQuestionCompleted] = React.useState(false);
   const [settings, setSettings] = React.useState({
     aGreaterOne: false,
@@ -35,8 +37,10 @@ export const QuestionCardRF = (props: any) => {
     setUserAnswer(questionFunctionOutput[0]);
     setCorrectAnswer(questionFunctionOutput[1]);
     updateQuestion(questionFunctionOutput[2]);
+    setHint(questionFunctionOutput[0]);
     setCorrect(false);
     setIncorrect(false);
+    setShowHint(false);
     setUserAnswer(props.defaultUserAnswer);
     setQuestionCompleted(false);
     console.log(questionFunctionOutput);
@@ -72,6 +76,10 @@ export const QuestionCardRF = (props: any) => {
   function handleAnswerChange(event: any) {
     setUserAnswer(event.target.value);
   }
+
+  const handleShowHint = () => {
+    setShowHint((prevShowHint)=>!prevShowHint)
+  };
 
   function showSettings() {
     setSettings((prevSettings) => ({
@@ -135,6 +143,13 @@ export const QuestionCardRF = (props: any) => {
       <span>
         {correct ? "Well done!" : ""}
         {incorrect ? "Try again!" : ""}
+      </span>
+      <span>
+        {incorrect ? (
+          <StyledButton onClick={handleShowHint}>{showHint ? String(hint):'Hint?'}</StyledButton>
+        ) : (
+          ""
+        )}
       </span>
     </StyledView>
   );
