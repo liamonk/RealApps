@@ -176,6 +176,14 @@ export const Game = () => {
       <StyledCardArea>{cardElements}</StyledCardArea>
       <StyledGameArea>Target: {target}</StyledGameArea>
       <CountdownTimer />
+      <div style={{fontSize: '20px'}}>
+        <ul>Instructions:
+        <li>Choose 6 numbers using the 'big' or 'small' buttons (or more if you like)</li>
+        <li>Use your six numbers to try and hit the target</li>
+        <li>The closest to the target is the winner!</li>
+        </ul>
+
+      </div>
     </>
   );
 };

@@ -56,7 +56,7 @@ export const Ncea = () => {
             width: "30%",
           }}
         >
-          <h2>Useful websites for resources:</h2>
+          <h2>Useful websites:</h2>
           <h3>
             <a href="https://sites.google.com/view/infinityplusone/home?authuser=0">
               Infinity plus one
