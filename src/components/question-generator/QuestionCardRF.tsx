@@ -49,7 +49,7 @@ export const QuestionCardRF = (props: any) => {
         .replace(/ /g, "")
         .replace(/\+\-/g, "-")
         .replace(/\b1x\b/g, "x");
-      /* part bewteen these comments is question specific, rest is generic */
+      /* part above is specific to algebraic manipulation, rest is generic */
       for (let i = 0; i < correctAnswers.length; i++) {
         if (modifiedAnswer == correctAnswers[i]) {
           setCorrect(true);
