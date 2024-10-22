@@ -3,19 +3,29 @@
     Is my state in the right place?
 */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { StyledView } from "./CardStyles";
 import { StyledButton } from "./CardStyles";
 import { StyledTextArea } from "./CardStyles";
 import { StyledSettingsButton } from "./CardStyles";
 import { StyledSettingsContainer } from "./CardStyles";
+import { NewQuestionOutput } from "./QuestionGenerator";
 
-export const QuestionCardRF = (props: any) => {
-  const [question, updateQuestion] = React.useState(props.defaultQuestion);
-  const [userAnswer, setUserAnswer] = React.useState(props.defaultUserAnswer);
-  const [correctAnswers, setCorrectAnswer] = React.useState(
-    props.defaultCorrectAnswer
-  );
+export interface QuestionCardRFProps {
+  newQuestion: () => NewQuestionOutput;
+  placeholderUserAnswer: string;
+  title: string;
+  onSuccess: () => void;
+}
+
+export interface QuestionCardRFInstanceProps {
+  onSuccess: () => void;
+}
+
+export const QuestionCardRF = (props: QuestionCardRFProps) => {
+  const [question, updateQuestion] = React.useState("");
+  const [userAnswer, setUserAnswer] = React.useState("");
+  const [correctAnswers, setCorrectAnswers] = React.useState<string[]>([]);
   const [correct, setCorrect] = React.useState(false);
   const [incorrect, setIncorrect] = React.useState(false);
   const [hint, setHint] = React.useState("");
@@ -26,22 +36,19 @@ export const QuestionCardRF = (props: any) => {
     negativeCoefficents: false,
     showSettings: false,
   });
-  const updateCount = () => {
-    const updatedCount = props.count + 1;
-    props.onUpdateCount(updatedCount);
-  };
+
+  useEffect(()=>{newQuestion()},[]);
 
   /*this function sets the new question and generates the correct answer then generates the question to display in the UI*/
   function newQuestion() {
     const questionFunctionOutput = props.newQuestion();
-    setUserAnswer(questionFunctionOutput[0]);
-    setCorrectAnswer(questionFunctionOutput[1]);
-    updateQuestion(questionFunctionOutput[2]);
-    setHint(questionFunctionOutput[0]);
+    setCorrectAnswers(questionFunctionOutput.answers);
+    updateQuestion(questionFunctionOutput.question);
+    setHint(questionFunctionOutput.hint);
     setCorrect(false);
     setIncorrect(false);
     setShowHint(false);
-    setUserAnswer(props.defaultUserAnswer);
+    setUserAnswer(props.placeholderUserAnswer);
     setQuestionCompleted(false);
     console.log(questionFunctionOutput);
   }
@@ -59,7 +66,7 @@ export const QuestionCardRF = (props: any) => {
           setCorrect(true);
           setIncorrect(false);
           setQuestionCompleted(true);
-          questionCompleted ? {} : updateCount();
+          questionCompleted ? {} : props.onSuccess();
           {
             break;
           }
@@ -78,7 +85,7 @@ export const QuestionCardRF = (props: any) => {
   }
 
   const handleShowHint = () => {
-    setShowHint((prevShowHint)=>!prevShowHint)
+    setShowHint((prevShowHint) => !prevShowHint);
   };
 
   function showSettings() {
@@ -130,7 +137,7 @@ export const QuestionCardRF = (props: any) => {
       </span>
       <h3>{props.title}</h3>
 
-      <span>{question}</span>
+      <span dangerouslySetInnerHTML={{__html : question}}></span>
 
       <StyledTextArea
         value={userAnswer}
@@ -146,7 +153,9 @@ export const QuestionCardRF = (props: any) => {
       </span>
       <span>
         {incorrect ? (
-          <StyledButton onClick={handleShowHint}>{showHint ? String(hint):'Hint?'}</StyledButton>
+          <StyledButton onClick={handleShowHint}>
+            {showHint ? String(hint) : "Hint?"}
+          </StyledButton>
         ) : (
           ""
         )}

@@ -57,6 +57,11 @@ export const Header = () => {
           </Link>
         </StyledNavButton>
         <StyledNavButton>
+          <Link to="triangle-solver">
+          <p>Triangle Solver</p>
+          </Link>
+        </StyledNavButton>
+        <StyledNavButton>
           <Link to="random-groups">
             <p>Random Groups</p>
           </Link>
