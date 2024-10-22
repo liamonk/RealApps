@@ -1,6 +1,4 @@
 import React from "react";
-import { QuestionCardRF } from "./QuestionCardRF";
-import { MathHelper } from "../../mathHelper";
 import { FactoriseQuadratic } from "./question-types/quadratic";
 
 
