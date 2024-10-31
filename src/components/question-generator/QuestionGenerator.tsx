@@ -1,6 +1,9 @@
 import React from "react";
-import { FactoriseQuadratic } from "./question-types/quadratic";
-
+import { FactoriseQuadratic } from "./question-types/factoriseQuadratic";
+import { FactoriseSingleBracket } from "./question-types/factorSingleBracket";
+import { SolveXBothSides } from "./question-types/solveXBothSides";
+import { SolveLinear } from "./question-types/solveLinear";
+import { SimplifyLikeTerms } from "./question-types/SimplifyLikeTerms";
 
 export interface NewQuestionOutput {
   hint: string;
@@ -23,9 +26,12 @@ export const QuestionGenerator = () => {
     <>
       <div style={{ marginLeft: "10px" }}>Correct answers: {count}</div>
       <div style={{ display: "flex" }}>
+        <FactoriseQuadratic onSuccess={addToCount} />
+        <FactoriseSingleBracket onSuccess={addToCount} />
+        <SolveXBothSides onSuccess={addToCount} />
+        <SolveLinear onSuccess={addToCount} />
+        <SimplifyLikeTerms onSuccess={addToCount} />
 
-        <FactoriseQuadratic onSuccess={addToCount}/>
-        
         {/* <QuestionCardRF
           title="Adding Integer"
           onUpdateCount={addToCount}

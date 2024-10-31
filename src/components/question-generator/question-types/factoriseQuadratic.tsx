@@ -49,9 +49,20 @@ export const FactoriseQuadratic = ({
       .replace(/\+\-/g, "-")
       .replace(/1x/g, "x")
       .replace(/ /g, "");
+    const ax2 = a == 1 ? "x" : `${a}x`;
+    let bx = "";
+    if (b == 0) {
+      bx = "";
+    } else if (b == 1) {
+      bx = "x";
+    } else if (b == -1) {
+      bx = "-x";
+    } else {
+      bx = `${b}x`;
+    }
     const newQuestion = `
       <span>
-        ${a}x<sup>2</sup> ${firstSign} ${b}x ${secondSign} ${c}
+        ${ax2}<sup>2</sup> ${bx == "" ? "" : firstSign} ${bx} ${secondSign} ${c}
       </span>`;
     return {
       hint: `... coefficent in first bracket is ${d}`,

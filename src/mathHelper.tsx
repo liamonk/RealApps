@@ -15,4 +15,10 @@ export class MathHelper {
     sign < 0.5 ? (sign = -1) : (sign = 1);
     return coefficent * sign;
   }
+  static RemovePlusMinus(string: string) {
+    return string.replace(/\+\-/g, "-");
+  }
+  static Remove1x(string: string) {
+    return string.replace(/1x/g, "x");
+  }
 }
