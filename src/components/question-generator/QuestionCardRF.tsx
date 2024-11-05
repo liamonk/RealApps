@@ -1,8 +1,5 @@
-/*  This is a mostly refactored card 
-    Still need to work on settings
-    Is my state in the right place?
-*/
-
+import "katex/dist/katex.min.css";
+import Latex from "react-latex-next";
 import React, { useEffect } from "react";
 import { StyledView } from "./CardStyles";
 import { StyledButton } from "./CardStyles";
@@ -37,7 +34,9 @@ export const QuestionCardRF = (props: QuestionCardRFProps) => {
     showSettings: false,
   });
 
-  useEffect(()=>{newQuestion()},[]);
+  useEffect(() => {
+    newQuestion();
+  }, []);
 
   /*this function sets the new question and generates the correct answer then generates the question to display in the UI*/
   function newQuestion() {
@@ -137,7 +136,7 @@ export const QuestionCardRF = (props: QuestionCardRFProps) => {
       </span>
       <h3>{props.title}</h3>
 
-      <span dangerouslySetInnerHTML={{__html : question}}></span>
+      <Latex>{question}</Latex>
 
       <StyledTextArea
         value={userAnswer}

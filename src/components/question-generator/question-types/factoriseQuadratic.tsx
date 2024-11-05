@@ -3,6 +3,7 @@ import { QuestionCardRF } from "../QuestionCardRF";
 import { NewQuestionOutput } from "../QuestionGenerator";
 import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
 
+
 export const FactoriseQuadratic = ({
   onSuccess,
 }: QuestionCardRFInstanceProps) => {
@@ -49,7 +50,7 @@ export const FactoriseQuadratic = ({
       .replace(/\+\-/g, "-")
       .replace(/1x/g, "x")
       .replace(/ /g, "");
-    const ax2 = a == 1 ? "x" : `${a}x`;
+    const ax2 = a == 1 ? "x^{2}" : `${a}x^{2}`;
     let bx = "";
     if (b == 0) {
       bx = "";
@@ -60,10 +61,11 @@ export const FactoriseQuadratic = ({
     } else {
       bx = `${b}x`;
     }
-    const newQuestion = `
-      <span>
-        ${ax2}<sup>2</sup> ${bx == "" ? "" : firstSign} ${bx} ${secondSign} ${c}
-      </span>`;
+
+    const newQuestion = `$${ax2} ${
+      bx === "" ? "" : firstSign
+    } ${bx} ${secondSign} ${c}$`;
+
     return {
       hint: `... coefficent in first bracket is ${d}`,
       answers: [correctAnswer1, correctAnswer2],
