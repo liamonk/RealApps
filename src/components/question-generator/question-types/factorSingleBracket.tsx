@@ -7,16 +7,19 @@ export const FactoriseSingleBracket = ({
   onSuccess,
 }: QuestionCardRFInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
-    const a = Math.abs(MathHelper.coefficentGenerator(6) + 1);
-    const b = MathHelper.coefficentGenerator(6);
-    const c = MathHelper.coefficentGenerator(6);
+    const a = Math.abs(MathHelper.coefficentGenerator(6, true, false));
+    const b = MathHelper.coefficentGenerator(6, true, false);
+    const c = MathHelper.coefficentGenerator(6, true, false);
     const d = a * b;
     const e = a * c;
-    const divisor = MathHelper.findHcf(b, c);
-    const solution = `${a * divisor}(${b / divisor}x+${c / divisor})`
-      .replace(/\+\-/g, "-")
-      .replace(/\b1x\b/g, "x");
-    const newQuestion = `${d}x ${e >= 0 ? "+" : ""} ${e}`;
+    let divisor = MathHelper.findHcf(b, c);
+    if (b < 0 && c < 0) {
+      divisor = divisor * -1;
+    }
+    const solution = MathHelper.ReformatMathStrings(
+      `${a * divisor}(${b / divisor}n+${c / divisor})`
+    );
+    const newQuestion = `${d}n ${e >= 0 ? "+" : ""} ${e}`;
     const correctAnswer = solution;
     return {
       hint: `... HCF is ${a}`,
@@ -29,7 +32,7 @@ export const FactoriseSingleBracket = ({
     <QuestionCardRF
       title="Factorise Single Bracket"
       onSuccess={onSuccess}
-      placeholderUserAnswer="?(x + ?)"
+      placeholderUserAnswer="?(n + ?)"
       newQuestion={generateNewQuestion}
     />
   );

@@ -1,4 +1,9 @@
+const MathJax = require("react-mathjax");
+
 export const Home = () => {
+  const tex = `f(x) = \\int_{-\\infty}^\\infty
+    \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
+    \\,d\\xi`;
   return (
     <>
       <h1>Welcome!</h1>

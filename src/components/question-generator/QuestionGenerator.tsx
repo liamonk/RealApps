@@ -4,6 +4,7 @@ import { FactoriseSingleBracket } from "./question-types/factorSingleBracket";
 import { SolveXBothSides } from "./question-types/solveXBothSides";
 import { SolveLinear } from "./question-types/solveLinear";
 import { SimplifyLikeTerms } from "./question-types/SimplifyLikeTerms";
+import { SimplifyMultiplication } from "./question-types/simplifyMultiplication";
 
 export interface NewQuestionOutput {
   hint: string;
@@ -25,12 +26,13 @@ export const QuestionGenerator = () => {
   return (
     <>
       <div style={{ marginLeft: "10px" }}>Correct answers: {count}</div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         <FactoriseQuadratic onSuccess={addToCount} />
         <FactoriseSingleBracket onSuccess={addToCount} />
         <SolveXBothSides onSuccess={addToCount} />
         <SolveLinear onSuccess={addToCount} />
         <SimplifyLikeTerms onSuccess={addToCount} />
+        <SimplifyMultiplication onSuccess={addToCount} />
 
         {/* <QuestionCardRF
           title="Adding Integer"

@@ -8,12 +8,14 @@ const StyledHeaderMain = styled.div`
   margin-bottom: 20px;
   box-shadow: 5px 5px lightgrey;
   display: flex;
-  margin-left: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const StyledNavButton = styled.li`
   display: block;
   margin-left: 50px;
+  margin-top: 5px;
   font-size: 20px;
   font-weight: 600;
   a {
@@ -32,6 +34,7 @@ const StyledNavArea = styled.ul`
   display: flex;
   justify-content: space-around;
   margin-left: auto;
+  flex-wrap: wrap;
 `;
 
 const StyledImage = styled.img`
@@ -58,7 +61,7 @@ export const Header = () => {
         </StyledNavButton>
         <StyledNavButton>
           <Link to="triangle-solver">
-          <p>Triangle Solver</p>
+            <p>Triangle Solver</p>
           </Link>
         </StyledNavButton>
         <StyledNavButton>

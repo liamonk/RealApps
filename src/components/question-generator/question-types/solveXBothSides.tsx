@@ -6,20 +6,20 @@ import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
 export const SolveXBothSides = ({ onSuccess }: QuestionCardRFInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /*ax+b=cx + d*/
-    let a = MathHelper.coefficentGenerator(8);
-    let b = MathHelper.coefficentGenerator(12);
-    let c = MathHelper.coefficentGenerator(8);
-    let x = MathHelper.coefficentGenerator(12);
+    let a = MathHelper.coefficentGenerator(8, true, false);
+    let b = MathHelper.coefficentGenerator(12, true, false);
+    let c = MathHelper.coefficentGenerator(8, true, false);
+    let x = MathHelper.coefficentGenerator(12, true, false);
     let d = a * x + b - c * x;
     let firstSign = b < 0 ? "" : "+";
     let secondSign = d < 0 ? "" : "+";
-    const solution = `x = ${x}`.replace(/\+\-/g, "-").replace(/\b1x\b/g, "x");
-    const newQuestion = `${a != 1 ? a : ""}x ${firstSign} ${b} = ${
+    const solution = MathHelper.ReformatMathStrings(`n = ${x}`);
+    const newQuestion = `${a != 1 ? a : ""}n ${firstSign} ${b} = ${
       c != 1 ? c : ""
-    }x ${secondSign} ${d}`;
+    }n ${secondSign} ${d}`;
     const correctAnswer = solution;
     return {
-      hint: `Start by adding/subtracting ${c}x`,
+      hint: `Start by adding/subtracting ${c}n`,
       answers: [correctAnswer],
       question: newQuestion,
     };
@@ -27,9 +27,9 @@ export const SolveXBothSides = ({ onSuccess }: QuestionCardRFInstanceProps) => {
 
   return (
     <QuestionCardRF
-      title="Solve with x on both sides"
+      title="Solve"
       onSuccess={onSuccess}
-      placeholderUserAnswer="x = ?"
+      placeholderUserAnswer="n = ?"
       newQuestion={generateNewQuestion}
     />
   );

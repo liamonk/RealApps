@@ -9,16 +9,25 @@ export class MathHelper {
     }
     return a;
   }
-  static coefficentGenerator(range: number) {
-    let coefficent = Math.floor(Math.random() * range) + 1;
+  static coefficentGenerator(range: number, negative = true, zero = true) {
+    let coefficent = Math.floor(Math.random() * range);
+    while (coefficent == 0 && zero == false) {
+      coefficent = Math.floor(Math.random() * range);
+    }
     let sign = Math.random();
     sign < 0.5 ? (sign = -1) : (sign = 1);
-    return coefficent * sign;
+    return coefficent * (negative ? sign : 1);
   }
   static RemovePlusMinus(string: string) {
     return string.replace(/\+\-/g, "-");
   }
   static Remove1x(string: string) {
-    return string.replace(/1x/g, "x");
+    return string.replace(/1n/g, "n");
+  }
+  static RemoveSpaces(string: string) {
+    return string.replace(/ /g, "");
+  }
+  static ReformatMathStrings(string: string) {
+    return string.replace(/ /g, "").replace(/1n/g, "n").replace(/\+\-/g, "-");
   }
 }
