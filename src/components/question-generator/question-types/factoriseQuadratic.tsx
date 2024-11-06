@@ -1,7 +1,7 @@
 import { MathHelper } from "../../../mathHelper";
 import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
 export const FactoriseQuadratic = ({
   onSuccess,

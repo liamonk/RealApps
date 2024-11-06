@@ -1,9 +1,9 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
-export const ComponentName = ({ onSuccess }: QuestionCardRFInstanceProps) => {
+export const ComponentName = ({ onSuccess }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /*question and answer logic here*/
 
@@ -18,7 +18,7 @@ export const ComponentName = ({ onSuccess }: QuestionCardRFInstanceProps) => {
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title=""
       onSuccess={onSuccess}
       placeholderUserAnswer=""

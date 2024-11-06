@@ -22,7 +22,7 @@ export const SolveLinear = ({ onSuccess }: QuestionCardInstanceProps) => {
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Solve for n"
       onSuccess={onSuccess}
       placeholderUserAnswer="n = ?"

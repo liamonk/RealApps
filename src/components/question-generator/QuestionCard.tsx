@@ -56,10 +56,7 @@ export const QuestionCard = (props: QuestionCardProps) => {
   const checkAnswer = () => {
     setUserAnswer((prevAnswer: string) => {
       /*regex to format user answer to allow for comparison to correct answer*/
-      let modifiedAnswer = MathHelper.prevAnswer
-        .replace(/ /g, "")
-        .replace(/\+\-/g, "-")
-        .replace(/\b1x\b/g, "x");
+      let modifiedAnswer = MathHelper.ReformatMathStrings(prevAnswer);
       /* part above is specific to algebraic manipulation, rest is generic */
       for (let i = 0; i < correctAnswers.length; i++) {
         if (modifiedAnswer == correctAnswers[i]) {

@@ -1,11 +1,11 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
 export const SimplifyMultiplication = ({
   onSuccess,
-}: QuestionCardRFInstanceProps) => {
+}: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /*ay^b * cy^d = ey^f*/
     const a = MathHelper.coefficentGenerator(9, true, false);
@@ -26,7 +26,7 @@ export const SimplifyMultiplication = ({
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Simplify"
       onSuccess={onSuccess}
       placeholderUserAnswer="?n^?"

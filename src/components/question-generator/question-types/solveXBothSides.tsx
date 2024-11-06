@@ -26,7 +26,7 @@ export const SolveXBothSides = ({ onSuccess }: QuestionCardInstanceProps) => {
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Solve"
       onSuccess={onSuccess}
       placeholderUserAnswer="n = ?"
