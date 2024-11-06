@@ -37,28 +37,27 @@ export const FactoriseQuadratic = ({
     } else {
       secondSign = "";
     }
-    let correctAnswer1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${
-      e / h
-    })(${f / i}x+${g / i})`
-      .replace(/\+\-/g, "-")
-      .replace(/1x/g, "x")
-      .replace(/ /g, "");
-    let correctAnswer2 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${
-      g / i
-    })(${d / h}x+${e / h})`
-      .replace(/\+\-/g, "-")
-      .replace(/1x/g, "x")
-      .replace(/ /g, "");
+    let correctAnswer1 = MathHelper.ReformatMathStrings(
+      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${e / h})(${f / i}x+${
+        g / i
+      })`
+    );
+    let correctAnswer2 = MathHelper.ReformatMathStrings(
+      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${g / i})(${d / h}x+${
+        e / h
+      })`
+    );
+
     const ax2 = a == 1 ? "x^{2}" : `${a}x^{2}`;
     let bx = "";
     if (b == 0) {
       bx = "";
     } else if (b == 1) {
-      bx = "n";
+      bx = "x";
     } else if (b == -1) {
-      bx = "-n";
+      bx = "-x";
     } else {
-      bx = `${b}n`;
+      bx = `${b}x`;
     }
 
     const newQuestion = `$${ax2} ${

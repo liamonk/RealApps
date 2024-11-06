@@ -28,6 +28,10 @@ export class MathHelper {
     return string.replace(/ /g, "");
   }
   static ReformatMathStrings(string: string) {
-    return string.replace(/ /g, "").replace(/1n/g, "n").replace(/\+\-/g, "-");
+    return string
+      .replace(/ /g, "")
+      .replace(/1n/g, "n")
+      .replace(/\+\-/g, "-")
+      .replace(/1x/g, "x");
   }
 }
