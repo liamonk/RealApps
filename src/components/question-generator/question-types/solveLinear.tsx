@@ -1,9 +1,9 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
-export const SolveLinear = ({ onSuccess }: QuestionCardRFInstanceProps) => {
+export const SolveLinear = ({ onSuccess }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /*ax+b=c*/
     let a = MathHelper.coefficentGenerator(12);
@@ -22,7 +22,7 @@ export const SolveLinear = ({ onSuccess }: QuestionCardRFInstanceProps) => {
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Solve for x"
       onSuccess={onSuccess}
       placeholderUserAnswer="x = ?"

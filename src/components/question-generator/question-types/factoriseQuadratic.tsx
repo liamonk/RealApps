@@ -1,12 +1,11 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
-
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
 export const FactoriseQuadratic = ({
   onSuccess,
-}: QuestionCardRFInstanceProps) => {
+}: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
     let d = Math.abs(MathHelper.coefficentGenerator(5));
@@ -74,7 +73,7 @@ export const FactoriseQuadratic = ({
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Factorise Quadratic"
       onSuccess={onSuccess}
       placeholderUserAnswer="(?x + ?)(?x + ?)"

@@ -1,11 +1,11 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
 export const FactoriseSingleBracket = ({
   onSuccess,
-}: QuestionCardRFInstanceProps) => {
+}: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     const a = Math.abs(MathHelper.coefficentGenerator(6) + 1);
     const b = MathHelper.coefficentGenerator(6);
@@ -26,7 +26,7 @@ export const FactoriseSingleBracket = ({
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Factorise Single Bracket"
       onSuccess={onSuccess}
       placeholderUserAnswer="?(x + ?)"

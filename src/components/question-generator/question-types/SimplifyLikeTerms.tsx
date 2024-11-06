@@ -1,11 +1,9 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
-export const SimplifyLikeTerms = ({
-  onSuccess,
-}: QuestionCardRFInstanceProps) => {
+export const SimplifyLikeTerms = ({ onSuccess }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /* ax+by+cx+dy */
     let a = MathHelper.coefficentGenerator(6) + 1;
@@ -32,7 +30,7 @@ export const SimplifyLikeTerms = ({
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Simplify"
       onSuccess={onSuccess}
       placeholderUserAnswer="?x + ?y"

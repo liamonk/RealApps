@@ -1,9 +1,9 @@
 import { MathHelper } from "../../../mathHelper";
-import { QuestionCardRF } from "../QuestionCardRF";
+import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
+import { QuestionCardInstanceProps } from "../QuestionCard";
 
-export const SolveXBothSides = ({ onSuccess }: QuestionCardRFInstanceProps) => {
+export const SolveXBothSides = ({ onSuccess }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /*ax+b=cx + d*/
     let a = MathHelper.coefficentGenerator(8);
@@ -26,7 +26,7 @@ export const SolveXBothSides = ({ onSuccess }: QuestionCardRFInstanceProps) => {
   };
 
   return (
-    <QuestionCardRF
+    <QuestionCard
       title="Solve with x on both sides"
       onSuccess={onSuccess}
       placeholderUserAnswer="x = ?"
