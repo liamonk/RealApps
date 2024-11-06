@@ -37,18 +37,19 @@ export const FactoriseQuadratic = ({
     } else {
       secondSign = "";
     }
-    let correctAnswer1 = MathHelper.ReformatMathStrings(
-      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}n+${e / h})(${f / i}n+${
-        g / i
-      })`
-    );
-
-    let correctAnswer2 = MathHelper.ReformatMathStrings(
-      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}n+${g / i})(${d / h}n+${
-        e / h
-      })`
-    );
-    const ax2 = a == 1 ? "n" : `${a}n`;
+    let correctAnswer1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${
+      e / h
+    })(${f / i}x+${g / i})`
+      .replace(/\+\-/g, "-")
+      .replace(/1x/g, "x")
+      .replace(/ /g, "");
+    let correctAnswer2 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${
+      g / i
+    })(${d / h}x+${e / h})`
+      .replace(/\+\-/g, "-")
+      .replace(/1x/g, "x")
+      .replace(/ /g, "");
+    const ax2 = a == 1 ? "x^{2}" : `${a}x^{2}`;
     let bx = "";
     if (b == 0) {
       bx = "";
@@ -59,10 +60,11 @@ export const FactoriseQuadratic = ({
     } else {
       bx = `${b}n`;
     }
-    const newQuestion = `
-      <span>
-        ${ax2}<sup>2</sup> ${bx == "" ? "" : firstSign} ${bx} ${secondSign} ${c}
-      </span>`;
+
+    const newQuestion = `$${ax2} ${
+      bx === "" ? "" : firstSign
+    } ${bx} ${secondSign} ${c}$`;
+
     return {
       hint: `... coefficent in first bracket is ${d}`,
       answers: [correctAnswer1, correctAnswer2],

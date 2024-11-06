@@ -22,6 +22,8 @@ export const StyledView = styled.div`
   text-align: center;
   border-radius: 5px;
   width: 400px;
+  font-family: 'STIX Two Text';
+  font-style: italic
 `;
 
 export const StyledButton = styled.button`
@@ -35,9 +37,7 @@ export const StyledButton = styled.button`
   margin-left: auto;
   margin-right: auto;
   color: #ac5293;
-  font-family: "Smooch Sans", sans-serif;
   font-weight: 700;
-
   &:hover {
     background-color: #e5c6ff;
   }
@@ -59,7 +59,6 @@ export const StyledSettingsButton = styled.button`
   margin-left: auto;
   border: none;
   background-color: #fedaf6;
-  font-family: "Smooch Sans", sans-serif;
   border-radius: 5px;
 
   &:hover {

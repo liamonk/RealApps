@@ -24,7 +24,6 @@ const StyledButton = styled.button`
   margin-left: auto;
   margin-right: auto;
   color: #ac5293;
-  font-family: "Smooch Sans", sans-serif;
   font-weight: 700;
 
   &:hover {
