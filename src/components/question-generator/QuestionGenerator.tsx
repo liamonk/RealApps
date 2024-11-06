@@ -4,6 +4,7 @@ import { FactoriseSingleBracket } from "./question-types/factorSingleBracket";
 import { SolveXBothSides } from "./question-types/solveXBothSides";
 import { SolveLinear } from "./question-types/solveLinear";
 import { SimplifyLikeTerms } from "./question-types/SimplifyLikeTerms";
+import { SimplifyMultiplication } from "./question-types/simplifyMultiplication";
 
 export interface NewQuestionOutput {
   hint: string;
@@ -31,6 +32,7 @@ export const QuestionGenerator = () => {
         <SolveXBothSides onSuccess={addToCount} />
         <SolveLinear onSuccess={addToCount} />
         <SimplifyLikeTerms onSuccess={addToCount} />
+        <SimplifyMultiplication onSuccess={addToCount} />
 
         
       </div>

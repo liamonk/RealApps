@@ -1,16 +1,16 @@
 import { MathHelper } from "../../../mathHelper";
 import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
-import { QuestionCardInstanceProps } from "../QuestionCard";
+import { QuestionCardRFInstanceProps } from "../QuestionCardRF";
 
 export const FactoriseQuadratic = ({
   onSuccess,
 }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
-    /* y = ax^2 + bx + c = h(dx + e)i(fx + g) */
-    let d = Math.abs(MathHelper.coefficentGenerator(5));
+    /* y = an^2 + bn + c = h(dn + e)i(fn + g) */
+    let d = Math.abs(MathHelper.coefficentGenerator(5, true, false));
     let e = MathHelper.coefficentGenerator(6);
-    let f = Math.abs(MathHelper.coefficentGenerator(2));
+    let f = Math.abs(MathHelper.coefficentGenerator(2, true, false));
     let g = MathHelper.coefficentGenerator(6);
     let a = d * f;
     let b = d * g + e * f;
@@ -37,18 +37,17 @@ export const FactoriseQuadratic = ({
     } else {
       secondSign = "";
     }
-    let correctAnswer1 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${
-      e / h
-    })(${f / i}x+${g / i})`
-      .replace(/\+\-/g, "-")
-      .replace(/1x/g, "x")
-      .replace(/ /g, "");
-    let correctAnswer2 = `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${
-      g / i
-    })(${d / h}x+${e / h})`
-      .replace(/\+\-/g, "-")
-      .replace(/1x/g, "x")
-      .replace(/ /g, "");
+    let correctAnswer1 = MathHelper.ReformatMathStrings(
+      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${d / h}x+${e / h})(${f / i}x+${
+        g / i
+      })`
+    );
+    let correctAnswer2 = MathHelper.ReformatMathStrings(
+      `${h != 1 ? h : ""}${i != 1 ? i : ""}(${f / i}x+${g / i})(${d / h}x+${
+        e / h
+      })`
+    );
+
     const ax2 = a == 1 ? "x^{2}" : `${a}x^{2}`;
     let bx = "";
     if (b == 0) {
@@ -76,7 +75,7 @@ export const FactoriseQuadratic = ({
     <QuestionCard
       title="Factorise Quadratic"
       onSuccess={onSuccess}
-      placeholderUserAnswer="(?x + ?)(?x + ?)"
+      placeholderUserAnswer="(?n + ?)(?n + ?)"
       newQuestion={generateNewQuestion}
     />
   );
