@@ -13,10 +13,11 @@ export const SimplifyMultiplication = ({
     const c = MathHelper.coefficentGenerator(9, true, false);
     const d = MathHelper.coefficentGenerator(5, true, false);
     const e = a * c;
-    const f = b * d;
-
-    const solution = MathHelper.ReformatMathStrings(`${e}n^${f}`);
-    const newQuestion = `${a}n<sup>${b}</sup> x ${c}n<sup>${d}</sup>`;
+    const f = b + d;
+    const xb = `x^{${b}}`
+    const xd = `x^{${d}}`
+    const solution = MathHelper.ReformatMathStrings(`${e}x^${f}`);
+    const newQuestion = `$${a}${xb} \\times ${c}${xd}$`;
     const correctAnswer1 = solution;
     return {
       hint: `Multiply coefficents add powers`,

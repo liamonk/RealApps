@@ -75,7 +75,7 @@ export const FactoriseQuadratic = ({
     <QuestionCard
       title="Factorise Quadratic"
       onSuccess={onSuccess}
-      placeholderUserAnswer="(?n + ?)(?n + ?)"
+      placeholderUserAnswer="(?x + ?)(?x + ?)"
       newQuestion={generateNewQuestion}
     />
   );

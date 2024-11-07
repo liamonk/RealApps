@@ -13,10 +13,10 @@ export const SimplifyLikeTerms = ({ onSuccess }: QuestionCardInstanceProps) => {
     let firstSign = b < 0 ? "" : "+";
     let secondSign = c < 0 ? "" : "+";
     let thirdSign = d < 0 ? "" : "+";
-    const solution = `${a + c}n+${b + d}y`;
+    const solution = `${a + c}x+${b + d}y`;
     const newQuestion = MathHelper.RemovePlusMinus(
       MathHelper.Remove1x(
-        `${a}n ${firstSign}${b}y ${secondSign}${c}n ${thirdSign}${d}y`
+        `$${a}x ${firstSign}${b}y ${secondSign}${c}x ${thirdSign}${d}y$`
       )
     );
     const correctAnswer = MathHelper.RemovePlusMinus(
@@ -33,7 +33,7 @@ export const SimplifyLikeTerms = ({ onSuccess }: QuestionCardInstanceProps) => {
     <QuestionCard
       title="Simplify"
       onSuccess={onSuccess}
-      placeholderUserAnswer="?n + ?y"
+      placeholderUserAnswer="?x + ?y"
       newQuestion={generateNewQuestion}
     />
   );

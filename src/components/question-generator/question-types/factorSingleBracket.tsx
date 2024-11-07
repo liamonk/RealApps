@@ -17,9 +17,9 @@ export const FactoriseSingleBracket = ({
       divisor = divisor * -1;
     }
     const solution = MathHelper.ReformatMathStrings(
-      `${a * divisor}(${b / divisor}n+${c / divisor})`
+      `${a * divisor}(${b / divisor}x+${c / divisor})`
     );
-    const newQuestion = `${d}n ${e >= 0 ? "+" : ""} ${e}`;
+    const newQuestion = `$${d}x ${e >= 0 ? "+" : ""} ${e}$`;
     const correctAnswer = solution;
     return {
       hint: `... HCF is ${a}`,
@@ -32,7 +32,7 @@ export const FactoriseSingleBracket = ({
     <QuestionCard
       title="Factorise Single Bracket"
       onSuccess={onSuccess}
-      placeholderUserAnswer="?(n + ?)"
+      placeholderUserAnswer="?(x + ?)"
       newQuestion={generateNewQuestion}
     />
   );
