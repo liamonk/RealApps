@@ -16,7 +16,7 @@ export const SolveXBothSides = ({ onSuccess }: QuestionCardInstanceProps) => {
     const solution = MathHelper.ReformatMathStrings(`x = ${x}`);
     const newQuestion = `$${a != 1 ? a : ""}x ${firstSign} ${b} = ${
       c != 1 ? c : ""
-    }n ${secondSign} ${d}$`;
+    }x ${secondSign} ${d}$`;
     const correctAnswer = solution;
     return {
       hint: `Start by adding/subtracting ${c}x`,

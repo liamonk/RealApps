@@ -60,9 +60,11 @@ export const FactoriseQuadratic = ({
       bx = `${b}x`;
     }
 
+    
+
     const newQuestion = `$${ax2} ${
       bx === "" ? "" : firstSign
-    } ${bx} ${secondSign} ${c}$`;
+    } ${bx} ${secondSign} ${c} $`;
 
     return {
       hint: `... coefficent in first bracket is ${d}`,

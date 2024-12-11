@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MathHelper } from "../../mathHelper";
 
 const StyledTextArea = styled.textarea`
   width: 50%;
@@ -13,51 +14,40 @@ const StyledTextArea = styled.textarea`
   color: AC5293;
 `;
 
+type Measures = {
+  side_a: string;
+  side_b: string;
+  side_c: string;
+  angle_A: string;
+  angle_B: string;
+  angle_C: string;
+};
+
+const getAngles = (side_a: string, side_b: string, side_c: string) => {
+  const _side_c = parseFloat(side_c);
+  const _side_b = parseFloat(side_b);
+  const _side_a = parseFloat(side_a);
+  const angle_A = String(
+    MathHelper.cosineRuleAngles(_side_c, _side_b, _side_a)
+  );
+  const angle_B = String(
+    MathHelper.cosineRuleAngles(_side_c, _side_a, _side_b)
+  );
+  const angle_C = String(
+    MathHelper.cosineRuleAngles(_side_a, _side_b, _side_c)
+  );
+  return { angle_A, angle_B, angle_C };
+};
+
 export const TriangleSolver = () => {
-  const [knownValues, updateKnownValues] = React.useState([3, 4, 90]);
-  const [calculatedValues, updateCalculatedValues] = React.useState([
-    2.65, 36.87, 53.13,
-  ]);
-
-  const cosineRuleSides = (b: number, c: number, A: number) => {
-    return Number(
-      Math.sqrt(
-        b * b + c * c - 2 * b * c * Math.cos(A * (Math.PI / 180))
-      ).toFixed(2)
-    );
-  };
-
-  const cosineRuleAngles = (a: number, b: number, c: number) => {
-    return Number(
-      (
-        Math.acos((a * a + b * b - c * c) / (2 * a * b)) *
-        (180 / Math.PI)
-      ).toFixed(2)
-    );
-  };
-
-  const handleCosineRuleSidesKnownValuesChange = (index: number) => (event: any) => {
-    const updatedKnownValues = [...knownValues];
-    updatedKnownValues[index] = event.target.value;
-    updateKnownValues(updatedKnownValues);
-    const updatedCalculatedValues = [...calculatedValues];
-    updatedCalculatedValues[0] = cosineRuleSides(
-      updatedKnownValues[0],
-      updatedKnownValues[1],
-      updatedKnownValues[2]
-    );
-    updatedCalculatedValues[1] = cosineRuleAngles(
-      updatedKnownValues[0],
-      updatedCalculatedValues[0],
-      updatedKnownValues[1]
-    );
-    updatedCalculatedValues[2] = cosineRuleAngles(
-      updatedKnownValues[1],
-      updatedCalculatedValues[0],
-      updatedKnownValues[0]
-    );
-    updateCalculatedValues(updatedCalculatedValues);
-  };
+  const [measures, updateMeasures] = React.useState<Measures>({
+    side_a: "100",
+    side_b: "100",
+    side_c: "141.421356237",
+    angle_A: "45",
+    angle_B: "45",
+    angle_C: "90",
+  });
 
   return (
     <>
@@ -78,37 +68,51 @@ export const TriangleSolver = () => {
 
       <h2>Cosine Rule Calculator (Side angle side)</h2>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <h3>Known Side 1</h3>
+        <h3>Side a</h3>
         <StyledTextArea
-          value={knownValues[0]}
-          onChange={handleCosineRuleSidesKnownValuesChange(0)}
+          value={measures?.side_a}
+          onChange={(e) => {
+            const new_side_a = e.target.value;
+            //get other two sides
+            updateMeasures({...measures, side_a: new_side_a});
+            console.log(new_side_a);
+            if (measures && new_side_a) {
+              const { side_c, side_b } = measures;
+              const newMeasures: Measures = {
+                side_a: new_side_a,
+                side_b,
+                side_c,
+                ...getAngles(new_side_a, side_b, side_c),
+              };
+              updateMeasures(newMeasures);
+            }
+          }}
         ></StyledTextArea>
-        <h3>Known Angle</h3>
+        <h3>Side b</h3>
         <StyledTextArea
-          value={knownValues[2]}
-          onChange={handleCosineRuleSidesKnownValuesChange(2)}
+          value={measures?.side_b}
+          onChange={() => {}}
         ></StyledTextArea>
-        <h3>Known Side 2</h3>
+        <h3>Side c</h3>
         <StyledTextArea
-          value={knownValues[1]}
-          onChange={handleCosineRuleSidesKnownValuesChange(1)}
+          value={measures?.side_c}
+          onChange={() => {}}
         ></StyledTextArea>
       </div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        
-        <h3>Missing Angle 1</h3>
+        <h3>Angle a</h3>
         <StyledTextArea
-          value={calculatedValues[1]}
+          value={measures?.angle_A}
           style={{ backgroundColor: "lightGrey" }}
         ></StyledTextArea>
-        <h3>Missing Side </h3>
+        <h3>Angle B </h3>
         <StyledTextArea
-          value={calculatedValues[0]}
+          value={measures?.angle_B}
           style={{ backgroundColor: "lightGrey" }}
         ></StyledTextArea>
-        <h3>Missing Angle 2</h3>
+        <h3>Angle C</h3>
         <StyledTextArea
-          value={calculatedValues[2]}
+          value={measures?.angle_B}
           style={{ backgroundColor: "lightGrey" }}
         ></StyledTextArea>
       </div>

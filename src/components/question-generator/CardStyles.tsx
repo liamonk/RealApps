@@ -23,7 +23,9 @@ export const StyledView = styled.div`
   border-radius: 5px;
   width: 400px;
   font-family: 'STIX Two Text';
-  font-style: italic
+  font-style: italic;
+  * {font-family: 'STIX Two Text' ;
+  font-style: italic}
 `;
 
 export const StyledButton = styled.button`

@@ -34,4 +34,30 @@ export class MathHelper {
       .replace(/\+\-/g, "-")
       .replace(/1x/g, "x");
   }
+
+  static CosineRuleSides(b: number, c: number, A: number) {
+    return Number(
+      Math.sqrt(
+        b * b + c * c - 2 * b * c * Math.cos(A * (Math.PI / 180))
+      ).toFixed(2)
+    );
+  }
+
+  static cosineRuleAngles = (
+    adjacent_side_1: number,
+    adjacent_side_2: number,
+    opposite_side: number
+  ) => {
+    return Number(
+      (
+        Math.acos(
+          (adjacent_side_1 * adjacent_side_1 +
+            adjacent_side_2 * adjacent_side_2 -
+            opposite_side * opposite_side) /
+            (2 * adjacent_side_1 * adjacent_side_2)
+        ) *
+        (180 / Math.PI)
+      ).toFixed(2)
+    );
+  };
 }

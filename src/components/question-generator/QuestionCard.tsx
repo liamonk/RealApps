@@ -133,8 +133,8 @@ export const QuestionCard = (props: QuestionCardProps) => {
         )}
       </span>
       <h3>{props.title}</h3>
-
-      <Latex>{question}</Latex>
+        
+      <Latex macros={{}}>{question}</Latex>
 
       <StyledTextArea
         value={userAnswer}

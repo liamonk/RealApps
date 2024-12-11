@@ -30,7 +30,7 @@ export const SimplifyMultiplication = ({
     <QuestionCard
       title="Simplify"
       onSuccess={onSuccess}
-      placeholderUserAnswer="?n^?"
+      placeholderUserAnswer="?x^?"
       newQuestion={generateNewQuestion}
     />
   );
