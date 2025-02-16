@@ -46,6 +46,12 @@ export const Ncea = () => {
               Mark schemes
             </a>
           </h4>
+          <h3>Backup of old exams removed from NZQA:</h3>
+          <h4>
+            <a href="https://www.ourexams.org/">
+              Our Exams
+            </a>
+            </h4>
         </div>
         <div
           style={{
