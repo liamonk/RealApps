@@ -31,14 +31,7 @@ export const StyledView = styled.div`
 `;
 
 export const QuestionGeneratorStyle = styled.div`
-  padding: 10px;
   font-size: 20px;
-  margin: 25px;
-  display: flex;
-  flex-direction: column;
-  overflow: clip;
-  border-radius: 5px;
-  width: 400px;
   font-family: "STIX Two Text";
   font-style: italic;
   * {

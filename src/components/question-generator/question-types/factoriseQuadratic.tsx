@@ -5,7 +5,9 @@ import { QuestionCardInstanceProps } from "../QuestionCard";
 import Latex from "react-latex-next";
 
 export const FactoriseQuadratic = ({
-  onSuccess,onlyQuestion,showAnswers
+  onSuccess,
+  onlyQuestion,
+  showAnswers,
 }: QuestionCardInstanceProps) => {
   const generateNewQuestion = (): NewQuestionOutput => {
     /* y = an^2 + bn + c = h(dn + e)i(fn + g) */
@@ -61,23 +63,30 @@ export const FactoriseQuadratic = ({
       bx = `${b}x`;
     }
 
-    
-
     const newQuestion = `$${ax2} ${
       bx === "" ? "" : firstSign
     } ${bx} ${secondSign} ${c} $`;
 
     return {
       hint: `... coefficent in first bracket is ${d}`,
-      answers: [correctAnswer1, "=" ,correctAnswer2],
+      answers: [correctAnswer1, "=", correctAnswer2],
       question: newQuestion,
     };
   };
 
   const { question, answers } = generateNewQuestion();
 
-  if (onlyQuestion){
-    return (<><div id='question'>{<Latex>{question}</Latex>}</div><div id='answer' style={{ color: showAnswers ? "black" : "white" }}>{answers}</div></>)
+  if (onlyQuestion) {
+    return (
+      <>
+        <div id="question" style={{ width: "240px" }}>
+          {<Latex>{question}</Latex>}
+        </div>
+        <div id="answer" style={{ color: showAnswers ? "black" : "white" }}>
+          {answers}
+        </div>
+      </>
+    );
   }
 
   return (
@@ -87,6 +96,5 @@ export const FactoriseQuadratic = ({
       placeholderUserAnswer="(?x + ?)(?x + ?)"
       newQuestion={generateNewQuestion}
     />
-
   );
 };

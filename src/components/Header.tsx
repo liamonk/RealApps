@@ -13,10 +13,13 @@ const StyledHeaderMain = styled.div`
 `;
 
 const StyledNavButton = styled.li`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-left: 50px;
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   a {
     text-decoration: none;
@@ -26,13 +29,19 @@ const StyledNavButton = styled.li`
   border-radius: 5px;
   padding-left: 20px;
   padding-right: 20px;
+  width: 60px;
+  @media (max-width: 600px) {
+    font-size: 12px;
+    width: 30px;
+    margin: 2px;
+  }
 `;
 
 const StyledNavArea = styled.ul`
   list-style-type: none;
   padding-left: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-left: auto;
   flex-wrap: wrap;
 `;

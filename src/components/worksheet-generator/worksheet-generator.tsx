@@ -33,7 +33,7 @@ const [showAnswers, setShowAnswers] = React.useState(false)
   return (
     <>
       <QuestionGeneratorStyle>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ display: "flex", maxWidth: '500px'}}>
           {" "}
           <p style={{marginRight: '20px'}}>Number Of Questions</p>
           <StyledTextArea
@@ -41,10 +41,10 @@ const [showAnswers, setShowAnswers] = React.useState(false)
             value={numberOfQuestions}
             onChange={handleNumberOfQuestionsChange}
           ></StyledTextArea>
-          <StyledButton style={{marginLeft:'1em'}} onClick={handleShowAnswersChange}>Show answers</StyledButton>
+          <StyledButton style={{marginLeft:'0'}} onClick={handleShowAnswersChange}>Show answers</StyledButton>
         </div>
         <h1>Factorise</h1>
-        <div>{questions}</div>
+        <div style = {{display: 'flex', flexWrap:'wrap',}}>{questions}</div>
       </QuestionGeneratorStyle>
     </>
   );
