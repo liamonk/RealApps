@@ -18,6 +18,8 @@ export interface QuestionCardProps {
 
 export interface QuestionCardInstanceProps {
   onSuccess: () => void;
+  onlyQuestion?: boolean;
+  showAnswers?: boolean
 }
 
 export const QuestionCard = (props: QuestionCardProps) => {
@@ -109,9 +111,6 @@ export const QuestionCard = (props: QuestionCardProps) => {
 
   return (
     <StyledView>
-      <StyledSettingsButton onClick={showSettings}>
-        Settings ⚙
-      </StyledSettingsButton>
       <span>
         {settings.showSettings ? (
           <StyledSettingsContainer>

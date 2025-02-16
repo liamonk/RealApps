@@ -28,7 +28,7 @@ export const QuestionGenerator = () => {
       <div style={{ marginLeft: "10px" }}>Correct answers: {count}</div>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "revert-layer"
        }}>
-        <FactoriseQuadratic onSuccess={addToCount} />
+        <FactoriseQuadratic onSuccess={addToCount} onlyQuestion={false}/>
         <FactoriseSingleBracket onSuccess={addToCount} />
         <SolveXBothSides onSuccess={addToCount} />
         <SolveLinear onSuccess={addToCount} />

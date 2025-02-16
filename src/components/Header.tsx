@@ -60,6 +60,11 @@ export const Header = () => {
           </Link>
         </StyledNavButton>
         <StyledNavButton>
+          <Link to="worksheet-generator">
+            <p>Worksheet Generator</p>
+          </Link>
+        </StyledNavButton>
+        <StyledNavButton>
           <Link to="triangle-solver">
             <p>Triangle Solver</p>
           </Link>
