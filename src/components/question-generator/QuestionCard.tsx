@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { StyledView } from "./CardStyles";
 import { StyledButton } from "./CardStyles";
 import { StyledTextArea } from "./CardStyles";
-import { StyledSettingsButton } from "./CardStyles";
 import { StyledSettingsContainer } from "./CardStyles";
 import { NewQuestionOutput } from "./QuestionGenerator";
 import { MathHelper } from "./../../mathHelper";
@@ -87,12 +86,7 @@ export const QuestionCard = (props: QuestionCardProps) => {
     setShowHint((prevShowHint) => !prevShowHint);
   };
 
-  function showSettings() {
-    setSettings((prevSettings) => ({
-      ...prevSettings,
-      showSettings: !prevSettings.showSettings,
-    }));
-  }
+
 
   /*This needs attention */
   const handleANegativeSettingsChange = () => {
