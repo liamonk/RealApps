@@ -75,7 +75,7 @@ export const FactoriseQuadratic = ({
     };
   };
 
-  const [data, setData] = useState(generateNewQuestion())
+  const [data] = useState(generateNewQuestion())
   if (onlyQuestion) {
     return (
       <>
