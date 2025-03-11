@@ -3,6 +3,7 @@ import { QuestionCard } from "../QuestionCard";
 import { NewQuestionOutput } from "../QuestionGenerator";
 import { QuestionCardInstanceProps } from "../QuestionCard";
 import Latex from "react-latex-next";
+import { useState } from "react";
 
 export const FactoriseQuadratic = ({
   onSuccess,
@@ -74,16 +75,15 @@ export const FactoriseQuadratic = ({
     };
   };
 
-  const { question, answers } = generateNewQuestion();
-
+  const [data, setData] = useState(generateNewQuestion())
   if (onlyQuestion) {
     return (
       <>
         <div id="question" style={{ width: "240px" }}>
-          {<Latex>{question}</Latex>}
+          {<Latex>{data.question}</Latex>}
         </div>
         <div id="answer" style={{ color: showAnswers ? "black" : "white" }}>
-          {answers}
+          {data.answers}
         </div>
       </>
     );
